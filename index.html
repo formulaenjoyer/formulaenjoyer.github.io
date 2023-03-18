@@ -11,27 +11,31 @@
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
 </head>
 
 <body class="bg-dark">
   <div class="container-fluid d-flex justify-content-space vh-100 overflow-hidden px-0">
     <div class="player-wrapper" id="split-player-formula">
-      <iframe class="iframe" src="https://vk.com/video_ext.php?oid=-211941733&id=456239248&hash=7a887b87edf4bf06"
+      <iframe class="iframe" src="https://vk.com/video_ext.php?oid=-211941733&id=456239252&hash=f4396cec56858434"
         frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
     </div>
     <div class="twitch-wrapper d-flex flex-column pt-1 pb-1" id="split-twitch">
       <div class="twitch-player-wrapper flex-fill" id="split-twitch-player">
-        <iframe class="iframe" src="https://player.twitch.tv/?channel=melharucos&parent=vinnarde.wroomwroom.net"
+        <!-- <iframe class="iframe" src="https://player.twitch.tv/?channel=melharucos&parent=vinnarde.wroomwroom.net"
           frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%">
-        </iframe>
+        </iframe> -->
+        <div class="iframe" id="embed-player">
+
+        </div>
       </div>
-      <div class="twitch-chat-wrapper flex-fill" id="split-twitch-chat">
+      <!-- <div class="twitch-chat-wrapper flex-fill" id="split-twitch-chat">
         <iframe class="iframe" id="twitch-chat-embed"
           src="https://www.twitch.tv/embed/melharucos/chat?parent=formulaenjoyer.github.io" height="100%"
           width="100%">
         </iframe>
-      </div>
+      </div> -->
     </div>
   </div>
 </body>
@@ -52,16 +56,36 @@ const twitchSizes = JSON.parse(localStorage.getItem('split-sizes-twitch')) || [2
     }
   });
 
-  Split(['#split-twitch-player', '#split-twitch-chat'], {
-    sizes: twitchSizes,
-    minSize: [100, 100],
-    gutterSize: 10,
-    cursor: 'row-resize',
-    direction: 'vertical',
-    onDragEnd: function (sizes) {
-      localStorage.setItem('split-sizes-twitch', JSON.stringify(sizes));
-    }
-  });
+  // Split(['#split-twitch-player', '#split-twitch-chat'], {
+  //   sizes: twitchSizes,
+  //   minSize: [100, 100],
+  //   gutterSize: 10,
+  //   cursor: 'row-resize',
+  //   direction: 'vertical',
+  //   onDragEnd: function (sizes) {
+  //     localStorage.setItem('split-sizes-twitch', JSON.stringify(sizes));
+  //   }
+  // });
+
+  let embed_player = new Twitch.Embed("embed-player", {
+    height: "100%",
+      width: "100%",
+      channel: "melharucos",
+      layout: "channel",
+      autoplay: true,
+      // Only needed if this page is going to be embedded on other websites
+      // parent: ["embed.example.com", "othersite.example.com"]
+    });
+
+    let embed_chat = new Twitch.Embed("embed-chat", {
+    height: "100%",
+      width: "100%",
+      channel: "melharucos",
+      layout: "channel",
+      autoplay: true,
+      // Only needed if this page is going to be embedded on other websites
+      // parent: ["embed.example.com", "othersite.example.com"]
+    });
 </script>
 
 </html>

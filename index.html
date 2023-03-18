@@ -43,7 +43,7 @@
 <script>
 
 const playerSize = JSON.parse(localStorage.getItem('split-sizes-player')) || [80, 20];
-const twitchSizes = JSON.parse(localStorage.getItem('split-sizes-twitch')) || [20, 80];
+// const twitchSizes = JSON.parse(localStorage.getItem('split-sizes-twitch')) || [20, 80];
 
   Split(['#split-player-formula', '#split-twitch'], {
     sizes: playerSize,
@@ -77,15 +77,15 @@ const twitchSizes = JSON.parse(localStorage.getItem('split-sizes-twitch')) || [2
       parent: ["vinnarde.wroomwroom.net" , "formulaenjoyer.test.io"]
     });
 
-    let embed_chat = new Twitch.Embed("embed-chat", {
-    height: "100%",
-      width: "100%",
-      channel: "melharucos",
-      layout: "channel",
-      autoplay: true,
-      // Only needed if this page is going to be embedded on other websites
-      // parent: ["embed.example.com", "othersite.example.com"]
-    });
+    // let embed_chat = new Twitch.Embed("embed-chat", {
+    // height: "100%",
+    //   width: "100%",
+    //   channel: "melharucos",
+    //   layout: "channel",
+    //   autoplay: true,
+    //   // Only needed if this page is going to be embedded on other websites
+    //   // parent: ["embed.example.com", "othersite.example.com"]
+    // });
 </script>
 
 </html>
